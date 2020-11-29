@@ -80,4 +80,34 @@ fn main() {
     let stripped: String = text.chars()
         .filter(|ch| ! ch.is_whitespace()).collect();
     println!("stripped {:?}", stripped);
+
+    // Matching
+    match multilingual.find('п') {
+        Some(idx) => {
+            let hi = &multilingual[idx..];
+            println!("Russian matched hi {}", hi);
+        }
+        None => println!("couldn't find find the greeting, Товарищ")
+    };
+
+    // If not interested in failure
+    if let Some(idx) = multilingual.find('п') {
+        println!("Russian hi {}", &multilingual[idx..]);
+    }
+    
+    let n = 1;
+    let text = match n {
+        0 => "zero",
+        1 => "one",
+        2 => "two",
+        _ => "many",
+    };
+    println!("n is {}", text);
+
+    let text = match n {
+        0..=3 => "small",
+        4..=6 => "medium",
+        _ => "large",
+    };
+    println!("n is {}", text);
 }
