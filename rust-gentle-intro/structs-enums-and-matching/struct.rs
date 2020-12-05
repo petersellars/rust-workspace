@@ -1,8 +1,17 @@
+use std::fmt;
+
 // Enables debug dump of Person
-#[derive(Debug)]
+// #[derive(Debug)]
 struct Person {
     first_name: String,
     last_name: String
+}
+
+// trait for debug - replace $[derive(Debug)]
+impl fmt::Debug for Person {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.full_name())
+    }
 }
 
 impl Person {
